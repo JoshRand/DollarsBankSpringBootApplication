@@ -34,10 +34,12 @@ public class LoginController
 	public String showWelcomePage(Locale locale, ModelMap model, @RequestParam String name, @RequestParam String password){
 	
 		if (!service.validateUser(name, password)) {
+			//System.out.println(name + " " + password);
 			model.put("errorMessage", "Invalid Credentials");
+			
 			return "login";
 		}
-		
+		model.put("name", name);
 		return "welcome";
 	}
 	

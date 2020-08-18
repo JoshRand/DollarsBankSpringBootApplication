@@ -21,6 +21,15 @@ public class Customer extends SavingsAccount
 	private String custAddress;
 	private String contactNumber;
 	private double balance;
+	private String password;
+	public String getPassword()
+	{
+		return password;
+	}
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
 	public double getBalance()
 	{
 		return balance;
