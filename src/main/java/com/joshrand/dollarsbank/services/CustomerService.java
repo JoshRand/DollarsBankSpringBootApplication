@@ -14,7 +14,10 @@ public class CustomerService
 
 	@Autowired
 	AccountDao aDao;
-	
+	public Customer getCustomer(String userId)
+	{
+		return aDao.getCustomerByUserId(userId);
+	}
 	public void saveCustomer(Customer cust)
 	{
 		aDao.save(cust);

@@ -79,10 +79,10 @@ td {
 	<div style="background: #34ccff; opacity: 70%">
 		<h1 style="text-align: center; color: black">Welcome to the
 			Registration Page</h1>
-		<h4 style="text-align: center; color: black">Fill in the required
+		<h4 style="text-align: center;padding-bottom:10px; color: black">Fill in the required
 			fields</h4>
 		<br>
-
+<h6 style="text-align:right;color: black; padding:10px;margin-top:-50px"><img class="mail" src="/img/mail.png" style="width:20px;">  DollarsBank@DollarsB.com      <img class="phone" src="/img/phone.png" style="width:20px;">     555-324-3214</h6>
 
 	</div>
 

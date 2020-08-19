@@ -12,7 +12,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   
 <style>
-
+<c:url value="/img/gp.png" var = "gp" />
 body {
   background-color: rgb(88, 88, 88); /* For browsers that do not support gradients */
   background-image: linear-gradient(-45deg,lightblue,white); /* Standard syntax (must be last) */
@@ -125,9 +125,9 @@ td {
 <%String option = "default";%>
 <div class="buttons" style="background:white;border: 10px solid;border-color: lightblue">
 
-<button class="btn btn-info" onclick="showDeposit()" >Deposit</button>
-<button class="btn btn-info" onclick="showWithdraw()" >Withdraw</button>
-<button class="btn btn-info" onclick="showTransfer()">Transfer</button>
+<button  class="btn btn-info" onclick="showDeposit()" style="background: #34ccff">Deposit</button>
+<button class="btn btn-info" onclick="showWithdraw()" style="background: #34ccff">Withdraw</button>
+<button class="btn btn-info" onclick="showTransfer()"style="background: #34ccff">Transfer</button>
 </div>
 <div class="transactions" style="background:white;border: 10px solid;border-color: lightblue">
 	<script>
@@ -181,6 +181,7 @@ td {
 	
 	
 		<h6>Please Select an option!${message}</h6>
+		
 </div>
 
 

@@ -16,7 +16,7 @@
 body {
   background-color: rgb(88, 88, 88); /* For browsers that do not support gradients */
   background-image: linear-gradient(-45deg,lightblue,white); /* Standard syntax (must be last) */
-  background-size: 200%;
+  background-size: 300%;
   -webkit-animation-name: change;
   -webkit-animation-duration: 5s;
   -webkit-animation-iteration-count: infinite;
@@ -38,7 +38,21 @@ h1 {
   text-align: center;
   color:black;
 }
-
+h3 {
+  position: relative;
+  animation: mymove 1s;
+  animation-timing-function:ease;
+  text-align: center;
+  color:black;
+}
+img {
+  position: relative;
+  animation: mymove 1s;
+  animation-timing-function:ease;
+  margin-left:60%;
+  align-content:center;
+  color:black;
+}
 @-webkit-keyframes mymove {
   from {left: 100%;}
   to {left: 0%;}
@@ -47,14 +61,14 @@ div{
 
 }
 
+td {
+	border-right: 5px solid #000;
+	border-color: silver;
+}
 .navbar-nav>li {
 	border-right: 1px solid #000;
 	border-bottom: 1px solid #000;
 	border-color: white;
-}
-td {
-	border-right: 5px solid #000;
-	border-color: silver;
 }
 .navbar-nav>li:last-child {
 
@@ -106,7 +120,13 @@ td {
    <a class="nav-link" href="/logout" style="">Logout</a>
 </nav>
 <!-- style="margin-left: 20px" align="center" -->
-<h1 >Welcome ${name}!</h1>
+<h1 >Welcome to your DollarsBank Account</h1>
+<h3 >Enjoy your stay!</h3>
+<a>things</a>
+<a>things</a>
+<a>things</a>
+<a>things</a>
+<img src="/img/gp.png" style="width:200px;">
 	<%-- <c:param name="name" value="${name}"/> <a href="/list-todos" style="margin-left: 20px">${clickhere}</a> ${statement} --%>
 	<footer>
 		<div class="fixed-footer" style="background:#34ccff;opacity:70%;" >
