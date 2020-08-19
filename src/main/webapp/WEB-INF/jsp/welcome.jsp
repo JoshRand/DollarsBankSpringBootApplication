@@ -14,18 +14,23 @@
 <style>
 
 body {
- /*black or silver, which is best*/
-  /*  background-color: rgb(88, 88, 88);*/
   background-color: rgb(88, 88, 88); /* For browsers that do not support gradients */
-  background-image: linear-gradient(-45deg,grey,white); /* Standard syntax (must be last) */
-  background-size: 800%;
+  background-image: linear-gradient(-45deg,lightblue,white); /* Standard syntax (must be last) */
+  background-size: 200%;
   -webkit-animation-name: change;
-  -webkit-animation-duration: 10s;
+  -webkit-animation-duration: 5s;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
  
 }
-
+@-webkit-keyframes change {
+	  from {
+   background-position: 10%;
+ }
+ to {
+   background-position: 80%;
+ }
+} 
 h1 {
   position: relative;
   animation: mymove 1s;
@@ -34,10 +39,6 @@ h1 {
   color:black;
 }
 
-@-webkit-keyframes change {
-	 from {background-position: 20%;}
- 		to {background-position: 60%;}
-} 
 @-webkit-keyframes mymove {
   from {left: 100%;}
   to {left: 0%;}
@@ -78,15 +79,15 @@ td {
 <body>
 
 <c:set var="name" value="${name}" scope="request"/>
-<div style="background:lightBlue;text-align:center"><h1>DOLLARS BANK V2</h1></div>
-<nav class="navbar navbar-expand-sm  navbar-dark bg-info" style="margin-top:-10px">
+
+<nav class="navbar navbar-expand-sm  navbar-dark" style="margin-top:-10px;background-color:#34ccff; ">
   <ul class="navbar-nav mr-auto" >
     <li class="nav-item active">
       <a class="nav-link disabled" href="#">Home</a>
     </li>
   		<li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage Account </a>
-    <div class="dropdown-menu bg-info">
+    <div class="dropdown-menu" style="background-color:#34ccff;">
       <a class="dropdown-item" href="/transactions-page" style="color: white;">Deposit/Transfer/Withdraw</a>
       <a class="dropdown-item" href="#" style="color: white">Transaction History</a>
       <a class="dropdown-item" href="#" style="color: white">Change Password</a>

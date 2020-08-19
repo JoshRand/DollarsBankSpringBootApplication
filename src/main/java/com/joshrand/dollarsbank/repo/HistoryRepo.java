@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import com.joshrand.dollarsbank.model.Customer;
 
 
-@Repository("AccountRepo")
-public interface AccountRepo extends CrudRepository<Customer,Integer>
+@Repository("HistoryRepo")
+public interface HistoryRepo extends CrudRepository<Customer,Integer>
 {
 	// To add other methods
-	public Customer findByUserId(String userId);
+	//public Customer findByUserId(String userId);
 	
 }

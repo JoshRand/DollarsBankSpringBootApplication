@@ -46,9 +46,9 @@ public class Customer extends SavingsAccount
 		this.custName = custName;
 		this.custAddress = custAddress;
 		this.contactNumber = contactNumber;
-		setUserId(userId);
-		setPassword(password);
-		setBalance(amount);
+		this.userId = (userId);
+		this.password = (password);
+		this.balance=(amount);
 		ldt = LocalDateTime.now();
 		/*
 		 * if(customerDao.getHistory(getUserId()).size() == 0) {
@@ -71,7 +71,7 @@ public class Customer extends SavingsAccount
 	{
 		
 		return "Customer [custName=" + custName + ", custAddress=" + custAddress + ", contactNumber=" + contactNumber
-				+ "]"+ "{Account info [[ UserId= "+getUserId()+" " +"UserPass= " +getPassword()+ "]]  }";
+				+ "]"+ "{Account info [[ UserId= "+getUserId()+" " +"UserPass= " +getPassword()+ "] balance = " + getBalance()+"]  }";
 	}
 	
 	public String getUserId()

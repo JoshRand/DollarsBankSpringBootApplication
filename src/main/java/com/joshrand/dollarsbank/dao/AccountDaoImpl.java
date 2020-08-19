@@ -20,11 +20,11 @@ public class AccountDaoImpl implements AccountDao
 	AccountRepo aRepo;
 
 	@Override
-	public int updateBalance(String userId, double balance) 
+	public String update(Customer cust) 
 	{
-
+		aRepo.save(cust);
+		return "Updated Balance";
 		
-		return 0;
 	}
 
 	@Override
@@ -39,13 +39,7 @@ public class AccountDaoImpl implements AccountDao
 		
 		aRepo.save(cust);
 	}
-///////
-	@Override
-	public Customer getCustomerById(int id) {
-		
-		return null;
-	}
-///////
+
 	@Override
 	public List<Customer> getAllAccounts() {
 		return (List<Customer>) aRepo.findAll();
@@ -56,10 +50,17 @@ public class AccountDaoImpl implements AccountDao
 	{
 		
 	}
-///////
 	@Override
 	public List<String> getHistory(String userId)
 	{
 		return null;
 	}
+
+	@Override
+	public Customer getCustomerByUserId(String userId)
+	{
+		return aRepo.findByUserId(userId);
+	}
+
+	
 }

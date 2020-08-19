@@ -17,6 +17,7 @@ public class RegisterService
 	
 	public boolean custExists(String uname) {
 		List<Customer> custList =  aDao.getAllAccounts();
+		System.out.println(custList.toString());
 		if(custList == null)
 		{
 			System.out.println("cust list null");
@@ -25,7 +26,7 @@ public class RegisterService
 			
 			for (Customer customer : custList)
 			{
-				if(customer.getUserId().equalsIgnoreCase(uname))
+				if(customer.getUserId() != null && customer.getUserId().equalsIgnoreCase(uname))
 					return true;
 			}
 			

@@ -21,10 +21,10 @@ public class RegistrationController
 	@GetMapping("/registration-page")
 	public String showRegistrationPage(ModelMap model, Customer cust, String message)
 	{
-		message = "dsaasdsadsas";
-		 cust = new Customer();
+		//message = "dsaasdsadsas";
+		cust = new Customer();
 		model.addAttribute("cust",cust);
-		model.addAttribute("message",message);
+		model.addAttribute("errorMessage",message);
 		return "registration";
 	}
 	
@@ -35,6 +35,7 @@ public class RegistrationController
 	{
 		if(result.hasErrors())
 		{
+			System.out.println(" ERROR  ~~~~~~~~~~~~~~ REGISTRATION PAGE");
 			return "registration-page";
 		}
 		if(regService.custExists(cust.getUserId()))
@@ -52,7 +53,7 @@ public class RegistrationController
 			model.put("cust", cust);
 		
 			regService.saveCustomer(cust);
-			return "login";
+			return "redirect:login";
 		}
 		
 	}

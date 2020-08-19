@@ -37,20 +37,23 @@ public class SavingsAccount extends Account
 	{
 		ldt = LocalDateTime.now();
 		//with collecitons
-		if(customerDao.getHistory(getUserId()).size() == 0)
-		{
+//		if(customerDao.getHistory(getUserId()).size() == 0)
+//		{
+		System.out.println(balance);
+		
 			balance += amount;
-		}
-		else
-		{
-		balance += amount;
-		addToHistory("Deposited " + amount + " into account ["+userId+"]\n"
-			+ "Balance - " + balance + " as of " +ldt.getDayOfWeek()+" "
-			+ ldt.getMonth()+" "+ldt.getDayOfMonth()+" "+ ldt.getHour()+":"+ldt.getMinute()+":"+ldt.getSecond()
-			+" " +" "+ldt.getYear());
-		
-		}
-		
+			System.out.println(balance);
+//		}
+//		else
+//		{
+//		balance += amount;
+//		addToHistory("Deposited " + amount + " into account ["+userId+"]\n"
+//			+ "Balance - " + balance + " as of " +ldt.getDayOfWeek()+" "
+//			+ ldt.getMonth()+" "+ldt.getDayOfMonth()+" "+ ldt.getHour()+":"+ldt.getMinute()+":"+ldt.getSecond()
+//			+" " +" "+ldt.getYear());
+//		
+//		}
+//		
 		
 	}
 

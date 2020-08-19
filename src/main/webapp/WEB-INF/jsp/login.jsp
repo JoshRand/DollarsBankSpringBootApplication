@@ -23,8 +23,8 @@ td {
 
 body {
   background-color: rgb(88, 88, 88); /* For browsers that do not support gradients */
-  background-image: linear-gradient(-45deg,grey,white); /* Standard syntax (must be last) */
-  background-size: 800%;
+  background-image: linear-gradient(-45deg,lightblue,white); /* Standard syntax (must be last) */
+  background-size: 200%;
   -webkit-animation-name: change;
   -webkit-animation-duration: 5s;
   -webkit-animation-iteration-count: infinite;
@@ -33,10 +33,10 @@ body {
 }
 @-webkit-keyframes change {
 	  from {
-   background-position: 20%;
+   background-position: 10%;
  }
  to {
-   background-position: 60%;
+   background-position: 80%;
  }
 } 
 div{
@@ -82,9 +82,12 @@ div{
 	<div class="login" style="background:white;border: 10px solid;border-color: lightblue"><!-- margin-left:40%;margin-top:1%;margin-right:40%"> -->
 		<form method="post"   style="padding: 20px;text-align:center;margin-left:0px">
 			
-			<h6 style="margin-left: -150px; color:black" ><u>Name :</u></h6> <input type="text" name="name" placeholder="Enter Username" style="margin-left: -10px" required/>
+			<h6 style="margin-left: -150px; color:black" ><u>Name :</u></h6> 
+			<input type="text" name="name" placeholder="Enter Username" style="margin-left: -10px" required/>
 		
-			<h6 style="margin-left: -125px; color:black"><u>Password :</u></h6> <input type="password" name="password" placeholder="Enter Password" style="margin-left: -10px"required/><br> 
+			<h6 style="margin-left: -125px; color:black"><u>Password :</u></h6> 
+			<input type="password" name="password" placeholder="Enter Password" style="margin-left: -10px"required/><br> 
+			
 			</br>
 			<input type="submit" class= "btn btn-info" style="margin-left: -10px"/>
 			<br>
