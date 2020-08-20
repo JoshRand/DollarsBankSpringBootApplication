@@ -95,18 +95,20 @@ td {
 				<u>Username :</u>
 			</h6>
 			<form:input path="userId" type="text" placeholder="Enter Username"
-				style="margin-left: 10px" />
+				style="margin-left: 10px" required="required"/>
 
 			<h6 style="margin-left: -150px; color: black">
 				<u>Password :</u>
 			</h6>
+			<!-- 1!2Rw41Q34E -->
 			<form:input path="password" type="text" placeholder="Enter Password"
-				style="margin-left: 10px" />
+				style="margin-left: 10px" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+				required="required"/>
 			<h6 style="margin-left: -150px; color: black">
 				<u>Full Name :</u>
 			</h6>
 			<form:input path="custName" type="text"
-				placeholder="Enter First Name" style="margin-left: 10px" />
+				placeholder="Enter First Name" style="margin-left: 10px" required="required"/>
 			<h6 style="margin-left: -150px; color: black">
 				<u>Address :</u>
 			</h6>
@@ -117,12 +119,12 @@ td {
 			</h6>
 			<form:input path="contactNumber" id="mobile" type="tel"
 				pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-				placeholder="Enter Phone Number" style="margin-left: 10px" />
+				placeholder="222-222-2222" style="margin-left: 10px" />
 			<h6 style="margin-left: -150px; color: black">
 				<u>Initial Deposit :</u>
 			</h6>
-			<form:input path="balance" type="number"
-				placeholder="Enter Initial Balance" style="margin-left: 10px" />
+			<form:input path="balance" type="number" min="0" step="any"
+				placeholder="Enter Initial Balance" style="margin-left: 10px" required="required"/>
 
 
 			<br>
@@ -133,7 +135,8 @@ td {
 			<br>
 			<a style="margin-left: 0px; color: black">Already have an
 				account?</a>
-			<a href="login" style="margin-left: 10px; color: blue">Login Here</a>
+			<a href="login" style="margin-left: 10px; color: blue">Login Here</a><br>
+			
 		</form:form>
 	</div>
 	<%

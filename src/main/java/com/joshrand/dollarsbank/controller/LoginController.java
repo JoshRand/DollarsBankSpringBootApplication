@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.joshrand.dollarsbank.services.LoginService;
+import com.joshrand.dollarsbank.utility.EncryptionUtility;
 
 
 @Controller
 @SessionAttributes("name")
 public class LoginController
 {
+	EncryptionUtility enc = new EncryptionUtility();
+	
 	@Autowired
 	LoginService service;
 	
@@ -33,11 +36,18 @@ public class LoginController
 	@RequestMapping(value="/login", method = RequestMethod.POST)
 	public String showWelcomePage(Locale locale, ModelMap model, @RequestParam String name, @RequestParam String password){
 	
-		if (!service.validateUser(name, password)) {
-			//System.out.println(name + " " + password);
-			model.put("errorMessage", "Invalid Credentials");
-			
-			return "login";
+		try
+		{
+			if (!service.validateUser(name, enc.encrypt(password))) {
+				//System.out.println(name + " " + password);
+				model.put("errorMessage", "Invalid Credentials");
+				
+				return "login";
+			}
+		} catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		model.put("name", name);
 		return "welcome";

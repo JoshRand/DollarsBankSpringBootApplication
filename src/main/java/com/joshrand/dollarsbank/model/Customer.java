@@ -10,9 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.joshrand.dollarsbank.dao.AccountDao;
 import com.joshrand.dollarsbank.dao.AccountDaoImpl;
+import com.joshrand.dollarsbank.dao.TransactionsDao;
+import com.joshrand.dollarsbank.dao.TransactionsDaoImpl;
+
+
+
 @Entity
 public class Customer extends SavingsAccount
 {
+	
+	
 	@Id
 	@GeneratedValue
 	private int id;
@@ -50,6 +57,7 @@ public class Customer extends SavingsAccount
 		this.password = (password);
 		this.balance=(amount);
 		ldt = LocalDateTime.now();
+		
 		/*
 		 * if(customerDao.getHistory(getUserId()).size() == 0) {
 		 * addToHistory("Initial Deposit Amount in account ["+userId+"]\n" +

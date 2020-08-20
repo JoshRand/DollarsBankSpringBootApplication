@@ -8,13 +8,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.joshrand.dollarsbank.dao.TransactionsDao;
+import com.joshrand.dollarsbank.dao.TransactionsDaoImpl;
 import com.joshrand.dollarsbank.model.Customer;
+import com.joshrand.dollarsbank.model.Transactions;
 import com.joshrand.dollarsbank.services.CustomerService;
 import com.joshrand.dollarsbank.services.RegisterService;
+import com.joshrand.dollarsbank.utility.EncryptionUtility;
 
 @Controller
 public class RegistrationController
 {
+	EncryptionUtility enc = new EncryptionUtility();
+	
+	
+	@Autowired
+	TransactionsDao tDao;
+	
 	@Autowired
 	RegisterService regService;
 	
@@ -49,9 +59,21 @@ public class RegistrationController
 		}
 		else
 		{
-		
+			
+			try
+			{
+				cust.setPassword(enc.encrypt(cust.getPassword()));
+			} catch (Exception e)
+			{
+				
+			}
+			
 			model.put("cust", cust);
-		
+			String descDepo = "Initial Deposit of $" + String.format("%.2f",cust.getBalance()) + " into account "+cust.getUserId()+" " + "Balance - $" + String.format("%.2f",cust.getBalance());
+			Transactions trans = new Transactions(cust.getUserId(),descDepo,"Initial Deposit");
+			
+			
+			tDao.save(trans);
 			regService.saveCustomer(cust);
 			return "redirect:login";
 		}

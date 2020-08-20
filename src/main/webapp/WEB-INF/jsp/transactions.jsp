@@ -33,7 +33,14 @@ body {
 } 
 h1 {
   position: relative;
-  animation: mymove 1s;
+  animation: mymove 0.5s;
+  animation-timing-function:ease;
+  text-align: center;
+  color:black;
+}
+h3 {
+  position: relative;
+  animation: mymove 0.5s;
   animation-timing-function:ease;
   text-align: center;
   color:black;
@@ -104,7 +111,7 @@ td {
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage Account </a>
     <div class="dropdown-menu" style="background-color:#34ccff;">
       <a class="dropdown-item" href="/transactions-page" style="color: white;">Deposit/Transfer/Withdraw</a>
-      <a class="dropdown-item" href="#" style="color: white">Transaction History</a>
+      <a class="dropdown-item" href="/transactions-history?name=${name}" style="color: white">Transaction History</a>
       <a class="dropdown-item" href="#" style="color: white">Change Password</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a>
@@ -122,6 +129,7 @@ td {
 </nav>
 
 <h1 >Welcome to Transactions, ${name}!</h1>
+<h3>Current Balance ${balance}</h3>
 <%String option = "default";%>
 <div class="buttons" style="background:white;border: 10px solid;border-color: lightblue">
 
@@ -180,7 +188,8 @@ td {
 	</form:form>
 	
 	
-		<h6>Please Select an option!${message}</h6>
+		<h6>Please Select an option!  ${message}</h6>
+		
 		
 </div>
 

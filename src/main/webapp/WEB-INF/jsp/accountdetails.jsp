@@ -82,7 +82,7 @@ h1 {
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage Account </a>
     <div class="dropdown-menu" style="background-color:#34ccff;">
       <a class="dropdown-item" href="/transactions-page" style="color: white;">Deposit/Transfer/Withdraw</a>
-      <a class="dropdown-item" href="#" style="color: white">Transaction History</a>
+      <a class="dropdown-item" href="/transactions-history?name=${name}" style="color: white">Transaction History</a>
       <a class="dropdown-item" href="#" style="color: white">Change Password</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a>
@@ -107,6 +107,8 @@ h1 {
       	<th>UserName</th>
       	<th>Password</th>
         <th>Full Name</th>
+        <th>Address</th>
+        <th>Phone#</th>
         <th>Balance</th>
         
       </tr>
@@ -116,7 +118,9 @@ h1 {
         <td>${cust.userId }</td>
         <td>${cust.password }</td>
         <td>${cust.custName }</td>
-        <td>${cust.balance }</td>
+        <td>${cust.custAddress }</td>
+        <td>${cust.contactNumber }</td>
+        <td>$${String.format("%.2f",cust.balance) }</td>
       </tr>
     
     </tbody>
