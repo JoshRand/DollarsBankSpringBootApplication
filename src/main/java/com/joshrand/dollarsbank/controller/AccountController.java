@@ -2,6 +2,9 @@ package com.joshrand.dollarsbank.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -16,11 +19,14 @@ import com.joshrand.dollarsbank.model.Customer;
 import com.joshrand.dollarsbank.model.Transactions;
 import com.joshrand.dollarsbank.services.CustomerService;
 import com.joshrand.dollarsbank.services.TransactionService;
+import com.joshrand.dollarsbank.utility.EncryptionUtility;
 
 @Controller
 public class AccountController
 {
 
+	EncryptionUtility enc = new EncryptionUtility();
+	
 	@Autowired
 	CustomerService customerService;
 	
@@ -34,41 +40,146 @@ public class AccountController
 	TransactionService tS;
 	
 	@GetMapping("/transactions-page")
-	public String getTransactionsPage()
+	public String getTransactionsPage(HttpSession session)
 	{
 		
-		return "transactions";
+		if(session.getAttribute("name") != null  && 
+				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) 
+		{
+			return "transactions";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
 	}
 	
 	@PostMapping("/transactions-page")
-	public String transactionHandler(ModelMap model, @RequestParam(value = "name") String name,@RequestParam String transferTo,
+	public String transactionHandler(ModelMap model, HttpServletRequest request ,@RequestParam String transferTo,
 			@RequestParam String option ,@RequestParam double amount)
 	{
 		
-		model.put("message", tS.transactionHandler(name, transferTo, option, amount));
-		Customer cust = aDao.getCustomerByUserId(name);
-		System.out.println(name + "Hello2" + cust.getBalance());
+		model.put("message", tS.transactionHandler(request.getSession().getAttribute("name").toString(), transferTo, option, amount));
+		Customer cust = aDao.getCustomerByUserId(request.getSession().getAttribute("name").toString());
+		System.out.println(request.getSession().getAttribute("name").toString() + "Hello2" + cust.getBalance());
 		model.put("balance",String.format("%.2f",cust.getBalance()));
-		return "transactions";
+		if(request.getSession().getAttribute("name") != null  && 
+				customerService.getCustomer(request.getSession().getAttribute("name").toString()).getSessionId().equals( request.getSession().getId())) 
+		{
+			return "transactions";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
 	}
+	
 	@GetMapping("/welcome-page")
-	public String getWelcomePage(ModelMap model)
-	{
-		return "welcome";
+	public String getWelcomePage(ModelMap model, HttpServletRequest request)
+	{	
+		
+		if(request.getSession().getAttribute("name") != null  && 
+				customerService.getCustomer(request.getSession().getAttribute("name").toString()).getSessionId().equals( request.getSession().getId())) {
+			return "welcome";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
+		
 	}
+	
 	@GetMapping("/account-details")
-	public String getAccountDetails(ModelMap model, Customer cust,@RequestParam(value = "name") String userName)
+	public String getAccountDetails(ModelMap model, HttpSession session,  Customer cust)
 	{
-		cust = customerService.getCustomer(userName);
-		System.out.println(cust.toString());
-	model.put("cust",cust);
-		return "accountdetails";
+		
+		
+		if(session.getAttribute("name") != null  && 
+				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) {
+			cust = customerService.getCustomer(session.getAttribute("name").toString());
+			System.out.println(cust.toString());
+			model.put("cust",cust);
+			return "accountdetails";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
+		
 	}
+	
 	@GetMapping("/transactions-history")
-	public String showTransactionHistory(ModelMap model, @RequestParam(value = "name") String name)
+	public String showTransactionHistory(ModelMap model,HttpSession session )
 	{
-		List<Transactions> list = tDao.getTransactionHistory(name);
+		List<Transactions> list = tDao.getTransactionHistory(session.getAttribute("name").toString());
 		model.put("list",list);
-		return "transactionhistory";
+		
+		
+		if(session.getAttribute("name") != null  && 
+				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) 
+		{
+			return "transactionhistory";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
+		
 	}
+	
+	@GetMapping("/password")
+	public String changePassword(ModelMap model,HttpSession session )
+	{
+		
+		if(session.getAttribute("name") != null  && 
+				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) 
+		{
+			return "changepass";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
+		
+	}
+	@PostMapping("/password")
+	public String changePasswordPost(ModelMap model, HttpSession session, @RequestParam String prevpassword, 
+			@RequestParam String newpassword, @RequestParam String newpasswordrepeat  )
+	{
+		Customer cust = customerService.getCustomer(session.getAttribute("name").toString());
+		System.out.println("Post password" + " " + prevpassword +" " +  newpassword+" " +  newpasswordrepeat + cust.toString());
+		try
+		{
+			if(cust.getPassword().equals(enc.encrypt(prevpassword)) && newpassword.equals(newpasswordrepeat))
+			{
+				cust.setPassword(enc.encrypt(newpassword));
+				System.out.println(" changing password");
+				customerService.saveCustomer(cust);
+				model.put("errorMessage","Password Changed!");
+				
+			}
+			else
+			{
+				System.out.println(" error message should display");
+				model.put("errorMessage","Wrong Password/Passwords must match!");
+				return "changepass";
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		if(session.getAttribute("name") != null  && 
+				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) 
+		{
+			return "changepass";
+		}
+		else
+		{
+			return "redirect:/login";
+		}
+		
+	}
+	
 }

@@ -3,40 +3,15 @@
 
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <head>
-
+<link rel="stylesheet" href="/CSS/style.css">
 <meta charset="ISO-8859-1">
 <title>Registration page</title>
 <style>
-body {
-	background-color: rgb(88, 88, 88);
-	/* For browsers that do not support gradients */
-	background-image: linear-gradient(-45deg, lightblue, white);
-	/* Standard syntax (must be last) */
-	background-size: 200%;
-	-webkit-animation-name: change;
-	-webkit-animation-duration: 5s;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-direction: alternate;
-}
 
-@
--webkit-keyframes change {from { background-position:10%;
-	
-}
-
-to {
-	background-position: 80%;
-}
-
-}
 div {
 	position: relative;
 }
 
-.navbar-nav>li {
-	border-right: 1px solid #000;
-	border-color: silver;
-}
 
 td {
 	border-right: 5px solid #000;
@@ -47,23 +22,13 @@ td {
 	border: none;
 }
 
-.fixed-footer {
-	width: 100%;
-	position: fixed;
-	background: #333;
-	padding: 10px 0;
-	color: #fff;
-}
-
-.fixed-footer {
-	bottom: 0;
-}
 
 .register {
 	width: 47%;
 	margin: auto;
 	margin-top: 1%;
 }
+
 </style>
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"

@@ -13,18 +13,27 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.joshrand.dollarsbank.model.Customer;
+import com.joshrand.dollarsbank.services.CustomerService;
 import com.joshrand.dollarsbank.services.LoginService;
 import com.joshrand.dollarsbank.utility.EncryptionUtility;
 
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
-@SessionAttributes("name")
+
 public class LoginController
 {
 	EncryptionUtility enc = new EncryptionUtility();
 	
 	@Autowired
 	LoginService service;
+	
+	@Autowired
+	CustomerService custService;
+	
+	
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	//@GetMapping("/login")
@@ -34,7 +43,7 @@ public class LoginController
 	
 	//@PostMapping("/login")
 	@RequestMapping(value="/login", method = RequestMethod.POST)
-	public String showWelcomePage(Locale locale, ModelMap model, @RequestParam String name, @RequestParam String password){
+	public String showWelcomePage(Locale locale, ModelMap model, HttpSession session, @RequestParam String name, @RequestParam String password){
 	
 		try
 		{
@@ -49,21 +58,39 @@ public class LoginController
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		model.put("name", name);
+		Customer cust = custService.getCustomer(name);
+		cust.setSessionId(session.getId());
+		custService.saveCustomer(cust);
+		session.setAttribute("name", name);
+		//model.put("name", name);
 		return "welcome";
 	}
 	
 	
 	@GetMapping("/logout")
-	public String logout(ModelMap model)
+	public String logout(ModelMap model, HttpServletRequest request)
 	{
-		
+		//delete session from account
+		if(request.getAttribute("name") == null)
+		{
+			request.getSession().invalidate();
+			return "redirect:/login";
+		}
+		System.out.println(custService.getCustomer(request.getSession().getAttribute("name").toString()));
+		Customer cust = custService.getCustomer(request.getSession().getAttribute("name").toString());
+		if(cust!=null)
+		{
+			cust.setSessionId("0");
+			custService.saveCustomer(cust);
+		}
 		//Cancel session
+		request.getSession().invalidate();
 		
 		
-		return "redirect:login";
+		return "redirect:/login";
 		
 	}
+	
 	
 	
 }

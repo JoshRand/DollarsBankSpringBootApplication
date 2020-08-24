@@ -1,0 +1,69 @@
+@charset "ISO-8859-1";
+
+body {
+  background-color: rgb(88, 88, 88); /* For browsers that do not support gradients */
+  background-image: linear-gradient(-45deg,lightblue,white); /* Standard syntax (must be last) */
+  background-size: 200%;
+  -webkit-animation-name: change;
+  -webkit-animation-duration: 5s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+ 
+}
+@-webkit-keyframes change {
+	  from {
+   background-position: 10%;
+ }
+ to {
+   background-position: 80%;
+ }
+} 
+
+.fixed-footer{
+ 		width: 100%;
+        position: fixed;        
+        background: #333;
+        padding: 10px 0;
+        color: #fff;
+}
+.fixed-footer{
+        bottom: 0;
+    }
+.navbar-nav>li {
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-color: white;
+}
+.navbar-nav>li:last-child {
+
+	
+	border-bottom: 1px solid #000;
+	border-color: white;
+}
+@-webkit-keyframes mymove {
+  from {left: 100%;}
+  to {left: 0%;}
+}
+h1 {
+  position: relative;
+  animation: mymove 1s;
+  animation-timing-function:ease;
+  text-align: center;
+  color:black;
+}
+h3 {
+  position: relative;
+  animation: mymove 1s;
+  animation-timing-function:ease;
+  text-align: center;
+  color:black;
+}
+
+h4 {
+  position: relative;
+  animation: mymove 1s;
+  animation-timing-function:ease;
+  text-align: center;
+  color:black;
+}
+

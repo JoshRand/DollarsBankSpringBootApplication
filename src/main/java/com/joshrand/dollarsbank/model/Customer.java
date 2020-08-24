@@ -29,6 +29,7 @@ public class Customer extends SavingsAccount
 	private String contactNumber;
 	private double balance;
 	private String password;
+	private String sessionId;
 	public String getPassword()
 	{
 		return password;
@@ -113,6 +114,14 @@ public class Customer extends SavingsAccount
 	public void setContactNumber(String contactNumber)
 	{
 		this.contactNumber = contactNumber;
+	}
+	public String getSessionId()
+	{
+		return sessionId;
+	}
+	public void setSessionId(String sessionId)
+	{
+		this.sessionId = sessionId;
 	}
 	
 	
