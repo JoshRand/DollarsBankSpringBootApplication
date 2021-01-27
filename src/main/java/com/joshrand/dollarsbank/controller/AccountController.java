@@ -93,7 +93,7 @@ public class AccountController
 	public String getAccountDetails(ModelMap model, HttpSession session,  Customer cust)
 	{
 		
-		
+		//?name=${name}
 		if(session.getAttribute("name") != null  && 
 				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) {
 			cust = customerService.getCustomer(session.getAttribute("name").toString());

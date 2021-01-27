@@ -83,14 +83,14 @@ td {
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage Account </a>
     <div class="dropdown-menu" style="background-color:#34ccff;">
       <a class="dropdown-item" href="/transactions-page" style="color: white;">Deposit/Transfer/Withdraw</a>
-      <a class="dropdown-item" href="/transactions-history?name=${name}" style="color: white">Transaction History</a>
+      <a class="dropdown-item" href="/transactions-history" style="color: white">Transaction History</a>
       <a class="dropdown-item" href="/password" style="color: white">Change Password</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
   </li>
     <li class="nav-item">
-      <a class="nav-link" href="/account-details?name=${name}">Account Details</a>
+      <a class="nav-link" href="/account-details">Account Details</a>
     </li>
     <!-- <li class="nav-item">
       <a class="nav-link disabled" href="#">Disabled</a>

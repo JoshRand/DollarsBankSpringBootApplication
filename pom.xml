@@ -28,13 +28,13 @@
 		<groupId>org.springframework.session</groupId>
 		<artifactId>spring-session-jdbc</artifactId>
 	</dependency>
-<!-- Session -->
 	
+<!-- Devtools helps refresh jsp pages when changes are made -->	
 	 <dependency> 
         <groupId>org.springframework.boot</groupId> 
         <artifactId>spring-boot-devtools</artifactId> 
     </dependency> 
-	
+<!-- 		 -->
 	<dependency>
         <groupId>org.apache.tomcat.embed</groupId>
         <artifactId>tomcat-embed-jasper</artifactId>
@@ -45,6 +45,7 @@
         <groupId>javax.servlet</groupId>
         <artifactId>jstl</artifactId>
     </dependency>
+    
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

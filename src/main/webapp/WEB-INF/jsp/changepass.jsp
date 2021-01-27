@@ -37,7 +37,7 @@
     </div>
   </li>
     <li class="nav-item">
-      <a class="nav-link" href="/account-details?name=${name}">Account Details</a>
+     <a class="nav-link" href="/account-details">Account Details</a>
     </li>
     <!-- <li class="nav-item">
       <a class="nav-link disabled" href="#">Disabled</a>
