@@ -57,7 +57,6 @@
     <thead>
       <tr>
       	<th>UserName</th>
-      	<th>Password</th>
         <th>Full Name</th>
         <th>Address</th>
         <th>Phone#</th>
@@ -68,7 +67,6 @@
     <tbody>
       <tr>
         <td>${cust.userId }</td>
-        <td>${cust.password }</td>
         <td>${cust.custName }</td>
         <td>${cust.custAddress }</td>
         <td>${cust.contactNumber }</td>

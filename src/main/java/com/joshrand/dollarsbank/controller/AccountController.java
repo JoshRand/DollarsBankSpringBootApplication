@@ -98,7 +98,12 @@ public class AccountController
 				customerService.getCustomer(session.getAttribute("name").toString()).getSessionId().equals( session.getId())) {
 			cust = customerService.getCustomer(session.getAttribute("name").toString());
 			System.out.println(cust.toString());
-			model.put("cust",cust);
+			Customer custToShow = cust.Clone();
+			StringBuilder stringBuilder = new StringBuilder(custToShow.getPassword());
+			for(int i = 0; i < stringBuilder.length(); i++)
+				stringBuilder.setCharAt(i, '*');
+			custToShow.setPassword(stringBuilder.toString());
+			model.put("cust",custToShow);
 			return "accountdetails";
 		}
 		else

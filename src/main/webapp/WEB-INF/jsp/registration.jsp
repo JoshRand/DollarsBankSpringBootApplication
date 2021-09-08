@@ -66,7 +66,7 @@ td {
 				<u>Password :</u>
 			</h6>
 			<!-- 1!2Rw41Q34E -->
-			<form:input path="password" type="text" placeholder="Enter Password"
+			<form:input path="password" type="password" placeholder="Enter Password"
 				style="margin-left: 10px" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
 				required="required"/>
 			<h6 style="margin-left: -150px; color: black">

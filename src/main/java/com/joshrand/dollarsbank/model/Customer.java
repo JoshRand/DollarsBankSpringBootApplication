@@ -75,6 +75,10 @@ public class Customer extends SavingsAccount
 		super(); 
 	}
 	
+	public Customer Clone()
+	{
+		return new Customer(this.custName, this.custAddress, this.contactNumber, this.userId, this.password, this.getBalance());
+	}
 	//TODO: Fix toString
 	public String toString()
 	{
